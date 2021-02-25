@@ -1,1 +1,1 @@
-# SP_2048_1lb
+# SP_2048_1lAndroidManifest.xmlb
