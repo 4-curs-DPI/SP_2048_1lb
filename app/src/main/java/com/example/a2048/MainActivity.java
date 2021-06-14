@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -57,6 +58,20 @@ public class MainActivity extends AppCompatActivity {
     private boolean isFullScreen() {
         return PreferenceManager.getDefaultSharedPreferences(this).getBoolean(IS_FULLSCREEN_PREF,
                 true);
+    }
+
+    /**
+     * Toggles the activity's fullscreen mode by setting the corresponding window flag
+     *
+     * @param isFullScreen boolean value
+     */
+    private void applyFullScreen(boolean isFullScreen) {
+        if (isFullScreen) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        } else {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
     }
 
 }
