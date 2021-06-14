@@ -16,6 +16,10 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+/**
+ * Main class
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String MAIN_ACTIVITY_TAG = "2048_MainActivity";
@@ -27,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
     private long mLastTouch;
     private static final long mTouchThreshold = 2000;
     private Toast pressBackToast;
+
+    /**
+     * Method crate
+     * @param savedInstanceState - saved action
+     */
 
     @SuppressLint({"SetJavaScriptEnabled", "ShowToast", "ClickableViewAccessibility"})
     @Override
