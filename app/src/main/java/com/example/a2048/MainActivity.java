@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.preference.PreferenceManager;
 import android.view.WindowManager;
 import android.webkit.WebView;
@@ -24,10 +26,17 @@ public class MainActivity extends AppCompatActivity {
     private static final long mTouchThreshold = 2000;
     private Toast pressBackToast;
 
+    @SuppressLint({"SetJavaScriptEnabled", "ShowToast", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        // Don't show an action bar or title
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        // Enable hardware acceleration
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
+                WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
     }
 
     @Override
