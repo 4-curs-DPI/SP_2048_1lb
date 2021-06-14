@@ -74,4 +74,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Prevents app from closing on pressing back button accidentally.
+     * mBackPressThreshold specifies the maximum delay (ms) between two consecutive backpress to
+     * quit the app.
+     */
+
+    @Override
+    public void onBackPressed() {
+        long currentTime = System.currentTimeMillis();
+        if (Math.abs(currentTime - mLastBackPress) > mBackPressThreshold) {
+            pressBackToast.show();
+            mLastBackPress = currentTime;
+        } else {
+            pressBackToast.cancel();
+            super.onBackPressed();
+        }
+    }
+
 }
