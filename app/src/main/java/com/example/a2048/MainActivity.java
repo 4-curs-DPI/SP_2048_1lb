@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private static final long mTouchThreshold = 2000;
     private Toast pressBackToast;
 
+    @SuppressLint({"SetJavaScriptEnabled", "ShowToast", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
