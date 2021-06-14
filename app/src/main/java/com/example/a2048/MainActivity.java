@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.preference.PreferenceManager;
@@ -39,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         // Enable hardware acceleration
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
                 WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+
+        // Apply previous setting about showing status bar or not
+        applyFullScreen(isFullScreen());
 
         // Check if screen rotation is locked in settings
         boolean isOrientationEnabled = false;
