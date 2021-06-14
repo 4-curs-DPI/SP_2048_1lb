@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         // Enable hardware acceleration
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
                 WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+
+        // Apply previous setting about showing status bar or not
+        applyFullScreen(isFullScreen());
     }
 
     @Override
