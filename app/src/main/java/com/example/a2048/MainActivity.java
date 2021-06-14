@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.preference.PreferenceManager;
@@ -37,6 +39,15 @@ public class MainActivity extends AppCompatActivity {
         // Enable hardware acceleration
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
                 WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+
+        // Check if screen rotation is locked in settings
+        boolean isOrientationEnabled = false;
+        try {
+            isOrientationEnabled = Settings.System.getInt(getContentResolver(),
+                    Settings.System.ACCELEROMETER_ROTATION) == 1;
+        } catch (Settings.SettingNotFoundException e) {
+            Log.d(MAIN_ACTIVITY_TAG, "Settings could not be loaded");
+        }
     }
 
     @Override
