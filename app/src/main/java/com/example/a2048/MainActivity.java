@@ -3,7 +3,9 @@ package com.example.a2048;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -37,6 +39,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         mWebView.saveState(outState);
+    }
+
+    /**
+     * Saves the full screen setting in the SharedPreferences
+     *
+     * @param isFullScreen boolean value
+     */
+
+    private void saveFullScreen(boolean isFullScreen) {
+        // save in preferences
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        editor.putBoolean(IS_FULLSCREEN_PREF, isFullScreen);
+        editor.apply();
+    }
+
+    private boolean isFullScreen() {
+        return PreferenceManager.getDefaultSharedPreferences(this).getBoolean(IS_FULLSCREEN_PREF,
+                true);
     }
 
 }
